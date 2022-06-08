@@ -1,0 +1,164 @@
+/* 1. từ ngoài vào trong
+   2. từ trên xuống dưới
+   3. từ tổng quan đến chi tiết */
+
+/* 1. vị trí
+   2. Kích thước (weight/height)
+   3. màu sắc
+   4. kiểu dáng (kiểu chữ, hình tròn hình vuông... */
+
+
+/* Reset CSS */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html{
+    font-family: Lato, sans-serif;
+}
+/* ------------------------------------------------------- */
+/* begin: header */
+/* header */
+#header{
+    height: 46.5px;
+    background-color: #000;
+    box-shadow: 1px 1px 5px #888888;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    font-size: 15px;
+    z-index: 1;
+}
+
+#nav li{
+    display: inline-block;
+    position: relative;
+}
+
+#nav li:hover > a,
+#nav li:hover .ti-angle-down {
+    background-color: #ccc;
+    color: #000;
+}
+
+#nav li a{
+    color: #fff;
+    line-height: 46.5px;
+    padding: 0 24px;
+    text-decoration: none;
+    display: inline-block;
+}
+#nav > li > a{
+    text-transform: uppercase;
+}
+
+#header .subnav{
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    box-shadow: 1px 1px 5px #888888;
+}
+
+#nav li:hover .subnav{
+    display: block;
+}
+
+#header .subnav li{
+    display: block;
+}
+#header .subnav a{
+    background-color: #fff;
+    color: #000;
+    display: block;
+    line-height: 37px;
+    padding: 0 16px;
+}
+
+#nav .ti-angle-down{
+    color: #fff;
+    font-size: 10px;
+    margin-left: 4px;
+}
+
+#nav .ti-search{
+    color: #fff;
+    float: right;
+    line-height: 46.5px;
+    padding: 0 24px;
+    font-weight: 700;
+}
+#nav .ti-search:hover{
+    background-color: #f44336;
+}
+
+/* begin: Slider */
+
+#slider{
+    margin-top: 46.5px;
+    padding-top: 50%;
+    background: url(/assets/slider/chicago.jpg) 
+    top center / cover no-repeat;
+    position: relative;
+}
+
+#slider .slider-content{
+    position: absolute;
+    color: #fff;
+    bottom: 47px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    padding: 0px 58px;
+    align-items: center;
+    font-size: 15px;
+}
+
+#slider .slider-heading{
+    font-weight: 300;
+    margin-bottom: 20px;
+    font-size: 24px;
+}
+
+#slider .slider-description{
+    font-weight: bolder;
+}
+
+/* end: Slider */
+
+/* begin: content */
+#content{
+}
+/* end: content  */
+
+/* begin: the band */
+#the-band{
+
+}
+/* end: the band  */
+
+/* begin: tour */
+#tour{
+
+}
+/* end: tour  */
+
+/* begin: contact */
+#contact{
+
+}
+/* end: contact  */
+
+/* begin: map */
+#map{
+
+}
+/* end: map  */
+
+/* begin: footer */
+#footer{
+
+}
+/* end: footer  */

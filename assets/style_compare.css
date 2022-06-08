@@ -1,0 +1,628 @@
+
+
+/* 1. từ ngoài vào trong
+   2. từ trên xuống dưới
+   3. từ tổng quan đến chi tiết */
+
+/* 1. vị trí
+   2. Kích thước (weight/height)
+   3. màu sắc
+   4. kiểu dáng (kiểu chữ, hình tròn hình vuông... */
+
+/* begin common */
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+html{
+    scroll-behavior: smooth; /* cuộn trang */
+    font-family: Verdana, sans-serif ;
+}
+
+.clear{
+    clear: both;
+}
+
+.row::after{ /* element HTML giả, sẽ tạo 1 element phía sau cùng của thẻ với các thuộc tính bên dưới */
+    content: "";
+    display: block;
+    clear: both;
+}
+
+.text-white{
+    color: #fff !important;
+}
+
+.text-center{
+    text-align: center !important;
+}
+
+.mt-8{
+    margin-top: 8px !important;
+}
+
+.mt-16{
+    margin-top: 16px !important;
+}
+
+.pull-right{
+    float: right !important;
+}
+.btn{
+    color: #fff;
+    background-color: #000;
+    text-decoration: none;
+    padding: 10px 10px;
+    display: inline-block;
+    margin-top: 15px;
+    border: none;
+}
+.btn:hover{
+    color: #000;
+    background-color: #ccc;
+    cursor: pointer;
+}
+
+.row{
+    margin-left: -8px;
+    margin-right: -8px;
+}
+
+.col{
+        float: left;
+        padding-left: 8px;
+        padding-right: 8px;
+}
+
+.col-third{
+    width: 33.33333%;
+}
+
+.col-half{
+    width: 50%;
+}
+
+.col-full{
+    width: 100%;
+}
+
+/* end common */
+
+/* begin header */
+
+#header{
+    height: 46.5px;
+    background-color: #000;
+    position: fixed;
+    right: 0;
+    left: 0;
+    top: 0;
+    z-index: 1;
+}
+#nav{
+    display: inline-block; /* vì thẻ ul của nav là block kế thừa toàn bộ bề ngang màn hình mà nó nằm, bây giờ sửa lại là inline-block. để nó chiếm đúng độ dài của chữ mà thẻ ul chưa thôi vì ul nằm trong nav nên ta css cho nav */
+}
+
+#nav, .subnav{
+    list-style-type: none;
+}
+
+#nav > li{
+    display: inline-block; /* đặt toàn bộ chữ trong thẻ li con của ID nav dạng inline - một hàng; kiểu block-đặt được kích thước */
+}
+
+#nav li{
+    position: relative;
+}
+
+#nav > li > a{
+    color:#fff;
+    text-transform: uppercase;
+}
+
+#nav li a{
+    text-decoration: none;
+    line-height: 46.5px;
+    padding: 0 24px;
+    display: block;
+}
+
+#nav > li:hover > a,
+#nav .subnav li:hover a{
+    color: #000;
+    background-color: #ccc;
+}
+
+#nav li:hover .subnav{
+    display: block;
+}
+
+#nav .subnav{
+    display: none;  /*ẩn các thẻ a trong subnav*/
+    position: absolute;
+    top: 100%; /*2 giá trị này đặt cho thẻ con subnav vị trí của nó, top 100% định nghĩa chiều cao box subnav là = chiều cao của "more" tức là bằng 46.5px, cần xem kỹ lại bài position */
+    left: 0;
+    background-color: #fff;
+    box-shadow: 0 0 10px 1px #888;
+    min-width: 150px; /*thẻ đặt chiều ngang thấp nhất của thẻ, sau này chiều dài dài hơn nó sẽ tự động dài ra*/
+}
+
+#nav .nav-around-down{
+    font-size: 10px; /*css cho icon nhỏ lại*/
+}
+
+#nav .subnav a{
+    color: #000;
+    padding: 0 14px; 
+    line-height: 30px;
+}
+
+#header .search-btn{
+    float: right;
+    line-height: 46.5px;
+    padding: 0 12.8px;
+}
+
+#header .search-icon{
+    color: #fff;
+    font-size: 20px;
+}
+
+#header .search-btn:hover{
+    color: #fff;
+    background-color:#f44336;
+    cursor: pointer;
+}
+/* End phần header------------------------ */
+
+/* begin Slider------------------------- */
+#slider{
+    margin-top: 46.5px;
+    padding-top: 50%;
+    background: url('/assets/img/slider/slider1.jpg') top center / cover no-repeat;
+    position: relative;
+}
+
+#slider .text-content{
+    position: absolute; 
+    color: #fff;
+    bottom: 47px;
+    /* begin cách 1 */
+    left: 50%; /* chỉ rằng mép chữ cái đầu tiên của thẻ sẽ nằm chính giữa của releative */
+    transform: translateX(-50%); /* chưa hiểu lắm, cần google. chức năng để lùi thẻ lại một nửa độ dài của chữ bên trong thẻ. giúp chữ trong thẻ nằm tại vị trí trung tâm  */
+    /* end cách 1 */
+    text-align: center; /* căn chỉnh chữ nằm ở trung tâm không gian mà chữ đó chiếm */
+
+    /* begin cách 2 */
+/* ngoài ra còn có cách cho chiều ngang mà chữ nó chiếm
+chiếm toàn bộ khung, giống với header, cho chiều
+ngang của tất cả thẻ a chứa chữ thẻ  bằng 46.5
+để nó chiếm cả chiều cao cảu header để chữ nằm giữa
+code:
+    width:100%
+Vẫn giữ nguyên tex-align, chỉ thay thế left;transform*/
+/* end cách 2 */
+
+/* begin cách 3 */
+/* dựa vào thuộc tính position của absolute với releative
+ta cho left = 0; right = 0 để chữ 2 bên dính vào */
+/* end cách 3 */
+
+/* khi nào dùng cách nào? cách nào dễ thì dùng, 
+biết nhiều cách thì tăng khả năng ứng biến */
+
+
+}
+
+#slider .text-heading{
+    font-weight: 500; /* độ dày của font chữ, từ 100-500*/
+    font-size: 24px; /* chỉnh lại kích thước font cho giống trang gốc*/
+}
+
+#slider .text-description{
+    font-size: 15px;
+    padding-top: 25px;
+
+}
+
+
+/* End Slider------------------------------ */
+
+
+/* begin content------------------------------- */
+
+/* begin about----------------------------- */
+/* begin about-selection--------------------- */
+.content-selection{
+    /* đặt chiều cao là 800px theo gốc cả nội dung trong content-selection */
+    width: 800px; 
+    /* đẩy sang trái/phải 1 khoảng auto cho nội dung chính giữa */
+    margin-left: auto;
+    margin-right: auto;
+    /* đẩy padding khối này trên dưới 64px */
+    padding: 64px 0 112px;
+}
+
+#content .selection-heading{
+    /* căn giữa chữ */
+    text-align: center;
+    /* font-size */
+    font-size: 30px;
+    /* chỉnh độ mỏng đậm chữ*/
+    font-weight: 500;
+    /* chỉnh chữ cách xa: THE BAND -> T H E   B A N*/
+    letter-spacing: 4px;
+
+}
+
+#content .selection-sub-heading{
+    /* căn giữa chữ */
+    text-align: center;
+    /* font-size:brower:16px */
+    font: 15px;
+    margin-top: 25px;
+    /* phong cách của font, italic là chữ nghiêng */
+    font-style: italic;
+    /* mờ sub-heading: có thể chọn màu mờ đi, hoặc dùng opacity, giá trị từ 0-1 */
+    opacity: 0.6;
+}
+
+#content .about-text{
+    margin-top: 15px;
+    font-size: 15px;
+    /* căn chỉnh chữ đều ở 2 bên giống word*/
+    text-align: justify;
+    /* điều chỉnh khoảng cách các dòng chữ bằng line-height. thường là giá trị tuyệt đối. với tiếng anh là 14px, tiếng việt là 16px*/
+    /* 1.4 ở đây là 1.4 * font-size:15px */
+    line-height: 1.4;
+}
+/* end about-selection------------------- */
+/* begin about-member-------------------- */
+#content .member-list{
+    margin-top: 48px;
+}
+#content .member-item{
+    /* khi dùng thẻ div nhóm 3 member-item lại với
+    nhau thì sẽ nằm trên 3 hàng, bản chất thẻ
+    div có tính chất block, có nhiều cách để khắc
+    phục vấn đề này, trong đó có cách dùng 
+    float:left, kéo cả 3 ông về biên phái bên
+    trái đề nằm hết trên 1 hàng, tạm thời cứ hiểu
+    như vậy đã */
+    /* ---- */
+    /* vấn đề khi sử dụng float: 
+    https://youtu.be/_sF4fWuE0iM?t=674 
+    nếu thẻ cha dùng float, tất cả cac thẻ con
+    kế thừa lại, thì các thẻ con float sẽ "chui ra
+    mặt phẳng khác, có 2 cách khắc phục
+    c1: overflow: hiden: thuộc tính này giúp thẻ cha căng ra và ôm hết thẻ con
+    c2: cear:both -> cách 2 yêu cầu phải css thuộc tính clear với một thẻ div, chi tiết xem clip
+    vì clear dùng chung cho cả trang nên đặt vị trí đầu/chung;*/
+    /* thẻ div clear tại html sẽ đặt bên trong thẻ cha */
+    float: left;
+    /* vì member-item sẽ kế thừa lại chiều ngang 
+    của member-list, member list kế thừa toàn bộ
+    chiều ngang của about-selection
+    nhìn vào web clone, ta thấy 3 ảnh căn đều vị
+    trí của about-selection.
+    vậy căn đều 3 ông tại vị trí memeber-list(cũng
+    là ông about-selection  */
+    /* width: căn chiều ngang  mỗi item cách
+    nhau X% độ dài của thẻ chứa nó, cụ thể là
+    thẻ member-item
+    - vậy muốn căn đều cả 3 thì chia 100/3=33.333*/
+    /* còn một cách khác là dùng hàm chia calc*/
+    /* width: calc(100%/3) */
+    width: 33.33333333%;
+    /* căn giữa cả 2 thẻ con member-name và
+    member-img */
+    text-align: center;
+
+
+}
+#content .member-name{
+    font-size: 15px;
+    /* text-align: center; ko cần thiết, đưa lên
+    thẻ member-item căn cả 2*/
+}
+#content .member-img{
+    /* dùng với 1 thuộc tính width hoặc height
+    sẽ chỉnh kích thước anh 1 trục, trục còn lại
+    tự động tỉ lệ */
+    width: 154px;
+    margin-top: 15px;
+    /* bo góc ảnh */
+    border-radius: 4px;
+    /* lúc này chữ ko căn giữa, nếu
+    text-align: center; 
+    thì ko được, nên đưa lên hẳn thẻ member-item
+    để căn giữa cả 2 */
+}
+/* end about-member------------------------- */
+
+/* begin content tour*/
+/* đặt màu cho toàn bộ thẻ tour */
+.tour-section{
+    background-color: #000;
+}
+
+/* đặt background cho 3 thẻ ul */
+.tickets-list{
+    background-color: #fff; 
+    margin-top: 40px    ;
+}
+/* đặt các kiểu dáng cho từng thẻ li */
+.tickets-list li{
+    color: #757575;
+    font-size: 15px;
+    padding: 11px 16px;
+    border-bottom: 1px solid #ddd;
+    list-style: none;
+}
+/* đặt các kiểu dáng cho từng thẻ sold out */
+.tickets-list .sold-out{
+    background-color: #f44336;
+    color: #fff;
+    padding: 3px 4px;
+    margin-left: 16px;
+}
+/* đặt các kiểu dáng cho thẻ quantity */
+.tickets-list .quantity{
+    float: right;
+    width: 24px;
+    height: 24px;
+    background-color: #000;
+    color: #fff;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 24px;
+    margin: -3px 24px 0 0;
+
+}
+
+/* end content tour */
+/* begin places */
+.places-list{
+    /* padding-top: 32px; */
+    /* margin-left: -8px;
+    margin-right: -8px; */
+    margin: 32px -8px 48px;
+
+}
+
+.place-item{
+    float: left;
+    width: 33.3333%;
+    padding: 0 8px;
+
+}
+
+.place-img{
+    width: 100%;
+    display: block;
+}
+.place-img:hover{
+    opacity: 0.6;
+}
+
+.place-body{
+    background-color: #fff;
+    padding: 16px;
+    font-size: 15px;
+
+}
+
+.place-heading{
+    font-size: 15px;
+    font-weight: 550;
+
+}
+
+.place-time{
+    padding-top: 15px;
+    color: #757575;
+}
+
+.place-desc{
+    padding-top: 15px;
+    line-height: 1.4;
+}
+
+/* end places */
+/* begin modal */
+
+/* điều chỉnh vị trí của toàn bộ thẻ modal che toàn bộ trang */
+.modal{
+    position: fixed;
+    /* adjust 4 huong */
+    /* với 4 huong = 0, khong can width/height
+    dã tuong quan voi cua so trinh duyet */
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    /* -- */
+    background-color: rgba(0,0,0,0.5);
+    /* dieu chinh vi tri conten modal (can giua amn hinh*/
+    align-items: center;
+    justify-content: center; /*nằm giữa chiều ngang, google lại */
+    display: none; /* sửa giao diện, cần google bổ sung kiến thức */
+    /* nếu display=none sẽ ẩn cái modal này,flex lại hiện */
+
+}
+/* xử lý open modal = js */
+.modal.open{
+    display: flex;
+}
+/* chế thêm fadeout mà chưa chạy */
+.modal.fade{
+    animation: modalFadeOut ease 0.4s;
+}
+.modal-container{
+    background-color: #fff;
+    width: 900px;
+    min-height: 200px;
+    /* đièu chỉnh position thẻ cha để điều chỉnh thẻ con nút X */
+    position: relative;
+    /* thêm thủ thuật để khi co nhỏ cửa sổ thì
+    content modal không bị dính vào màn hình */
+    max-width: calc(100% - 32px);
+    /* giải thích
+    ;max-width: tối đa bề ngang, sẽ bằng
+    chiều dài ban đầu của nó -32px, mỗi bên sẽ cách 32/2 =16px
+    nếu cửa sổ là 1000px: max là 968px
+    nếu cửa sổ là 200px, max sẽ là 168px */
+    animation: modalFadeIn ease 0.4s;
+}
+/* tạo keyframes cho animation */
+@keyframes modalFadeIn {
+    from{
+        opacity: 0;
+        transform:translateY(-170px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+@keyframes modalFadeOut {
+    from{
+        opacity: 1;
+        transform: translateY(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(-170px);
+    }
+}
+.modal .modal-header{
+    background-color: #009688;
+    height: 130px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    color:#fff;
+}
+
+.modal-heading-icon{
+    margin-right: 16px;
+}
+
+.modal-close{
+    position: absolute;
+    right: 0;
+    top: 0;
+    /* margin: 10px 10px 0 0; */
+    /* dung padding thay vi margin vì co khong gian de tuong tac voi phan tu
+    nut x luc này se co khong gian bam to hon */
+    padding: 12px;
+    color: #fff;
+    cursor: pointer;
+    opacity: 0.7;
+}
+.modal-close:hover{
+    opacity: 1;
+    background-color: #ccc;
+    color: #000;
+}
+
+.modal-body{
+    padding: 16px;
+}
+
+.modal-label {
+    display: block;
+    font-size: 15px;
+    margin-bottom: 12px;
+}
+
+.modal-input {
+    border: 1px solid #ccc;
+    width: 100%;
+    padding: 10px;
+    font-size: 15px;
+    margin-bottom: 24px;
+}
+
+#buy-tickets {
+    background-color: #009688;
+    border: none;
+    color: #fff;
+    width: 100%;
+    font-size: 15px;
+    text-transform: uppercase;
+    padding: 18px;
+    cursor: pointer;
+}
+
+#buy-tickets:hover {
+    opacity: 0.6;
+}
+
+.modal-footer{
+    text-align: right;
+    padding: 16px;
+}
+.modal-footer a{
+    color: #2196F3;
+}
+/* end modal */
+
+/* begin contact form */
+.contact-content{
+    margin-top: 48px;
+}
+.contact-info{
+    font-style: 18px;
+    line-height: 1.5;
+}
+.contact-info i[class*="ti-"]{
+    width: 30px;
+    display: inline-block;
+}
+.contact-form{
+    font-style: 15px;
+}
+.contact-form .form-control{
+    padding: 10px;
+    border: 1px solid #ccc;
+    width: 100%;
+    /* outline, đường biên bên ngoài ô input
+    cần google thêm */
+    outline: none;
+}
+/* Begin: Map Section */
+
+/* End: Map Section */
+.map-section img{
+    width: 100%;
+}
+/* end contact form */
+
+/* phần footer dưới cùng */
+#footer{
+    padding: 64px 16px;
+    text-align: center;
+}
+#footer .socials-list{
+    font-size: 24px;
+    color: #000;
+}
+#footer .socials-list a{
+    text-decoration: none;
+    color: rgba(0,0,0,0.6);
+}
+#footer .copyright a:hover,
+#footer .socials-list a:hover{
+    opacity: 0.6;
+}
+#footer .copyright{
+    margin: 15px 0;
+    font-size: 15px;
+    color: rgba(0,0,0,0.8);
+}
+#footer .copyright a{
+    color: rgba(0,0,0,0.8);
+}
