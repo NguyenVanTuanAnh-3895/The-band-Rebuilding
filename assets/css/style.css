@@ -17,6 +17,9 @@
 html{
     font-family: Lato, sans-serif;
 }
+.clear{
+    clear: both;
+}
 /* ------------------------------------------------------- */
 /* begin: header */
 /* header */
@@ -134,16 +137,278 @@ html{
 /* end: content  */
 
 /* begin: the band */
-#the-band{
+/* #content #band{
+    width: 800px;
+} */
 
+.section-content{
+    width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    padding: 64px 0;
+    font-size: 15px;
 }
+.section-content .section-heading{
+    margin-top: 10px;
+    font-size: 30px;
+    font-weight: 400;
+    letter-spacing: 4px;
+    font-family: "Segoe UI", Lato, sans-serif;
+}
+
+.section-content .section-sub-heading{
+    margin: 25px 0 15px;
+    font-style: italic;
+    opacity: 0.6;
+    font-weight: 545;
+}
+
+.section-content .band-description{
+    text-align: justify;
+    line-height: 1.5;
+}
+
+.section-content .member-list{
+    padding: 47px 0 32px;
+}
+
+.section-content .member-name {
+    margin: 15px 0;
+}
+
+.section-content .member-img {
+    margin-bottom: 16px;
+    width: 154px;
+}
+
+
+.section-content .member-item{
+    float: left;
+    width: 33.3333%;
+}
+
+
+
 /* end: the band  */
 
 /* begin: tour */
 #tour{
+    background-color: #000;
+}
 
+#tour .section-content{
+    width: 768px;
+    color: #fff;
+}
+
+#tour .tour-ticket li{
+    background-color: #fff;
+    color: #757575;
+    list-style-type: none;
+    border-bottom: 1px solid #ddd;
+    text-align: left;
+    padding: 8px 16px;
+    line-height: 22.5px;
+}
+#tour .tour-ticket .tour-status{
+    padding: 4px 8px;
+    margin-left: 16px;
+    background-color: #f44336;
+    color: #fff;
+}
+
+#tour .tour-ticket .still{
+    float: right;
+    background-color: #000;
+    color: #fff;
+    width: 24px;
+    height: 22.5px;
+    border-radius: 50%;
+    text-align: center;
+    justify-content: center;
+}
+
+#tour .place-list{
+    padding: 32px 0 48px;
+    margin: 0 -8px;
+}
+
+#tour .tour-ticket{
+    padding-top: 20px;
+}
+
+#tour .place-item{
+    float: left;
+    width: 33.33333%;
+    color: #000;
+    padding: 0 8px;
+}
+
+#tour .place-item .place-img{
+    width: 100% ;
+    display: block;
+}
+#tour .place-item .place-img:hover{
+    opacity: 0.6;
+}
+
+#tour .place-item .place-body{
+    background-color: #fff;
+    padding: 16px;
+    text-align: left;
+    font-size: 15px;
+}
+#tour .place-body .place-heading{
+    margin: 15px 0;
+}
+
+#tour .place-body .place-time{
+    margin: 15px 0;
+    opacity: 0.6;
+}
+
+#tour .place-body .place-description{
+    margin: 15px 0;
+}
+
+#tour .place-body .place-buy-btn{
+    margin-bottom: 1px;
+    padding: 8px 16px;
+    border: none;
+    background-color: #000;
+    color: #fff;
+    cursor: pointer;
+    height: 39px;
+    width: 108px;
+}
+
+#tour .place-body .place-buy-btn:hover {
+    background-color: #ccc;
+    color: #000;
 }
 /* end: tour  */
+
+/* begin: modal */
+
+@keyframes modalFadeIn {
+    from{
+        opacity: 0;
+        transform:translateY(-170px);;
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.modal{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0 , 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    display: none;
+}
+.modal.open{
+    display: flex;
+}
+
+.modal .modal-container{
+    background-color: #fff;
+    width: 900px;
+    min-height: 200px;  /* tự tăng khi các thành phần tăng*/
+    max-width: calc(100% - 32px);
+    position: relative;
+    animation: modalFadeIn ease 0.4s;
+}
+
+.modal .modal-header{
+    height: 130px;
+    background-color: #009688;
+    display: flex;
+    align-items: center;
+    justify-content: center;  
+    font-size: 30px;
+    color: #fff;  
+    letter-spacing: 4px;
+    font-family: Segoe UI;
+    /* position: relative; */
+}
+
+.modal .modal-heading-icon{
+    padding-right: 16px;
+}
+
+.modal .modal-close {
+    position: absolute; 
+    top: 0px;
+    right: 0;
+    padding: 8px;
+}
+
+.modal .modal-close:hover {
+    background-color: #ccc;
+    color: #000;
+}
+
+.modal .modal-body{
+    padding: 15px 16px;
+}
+
+.modal .modal-footer{
+    padding: 15px 16px 30px;
+}
+.modal .modal-body .modal-label,
+.modal .modal-body .modal-button{
+    display: block;
+}
+
+.modal .modal-body .modal-input {
+    border: 1px solid #ccc;
+    font-size: 15px;
+    padding: 8px;
+    margin: 15px 0 30px;
+    width: 100%;
+}
+
+
+.modal .modal-body .modal-button {
+    margin-top: -14px;
+    font-size: 15px;
+    width: 100%;
+    height: 55px;
+    background-color: #009688;
+    color: #fff;
+    border: none;
+}
+
+.modal .modal-body .modal-button:hover{
+    background-color: #ccc;
+    color: #000;
+}
+.modal .modal-close-2{
+    display: inline;
+    padding: 10px 16px;
+    background-color: #f44336;
+    color: #fff;
+    font-weight: 550;
+    cursor: pointer;
+}
+
+
+.modal .modal-help{
+    display: inline;
+    float: right;
+}
+
+
+
+/* end: contact */
 
 /* begin: contact */
 #contact{

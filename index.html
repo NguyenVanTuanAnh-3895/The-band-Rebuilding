@@ -13,9 +13,9 @@
     <div id="header">
         <ul id="nav">
             <li><a href="#">Home</a></li>
-            <li><a href="#">Band</a></li>
-            <li><a href="#">Tour</a></li>
-            <li><a href="#">Contact</a></li>
+            <li><a href="#band">Band</a></li>
+            <li><a href="#tour">Tour</a></li>
+            <li><a href="#contact">Contact</a></li>
             <li>
                 <a href="#">More<i class="ti-angle-down"></i> </a>
                 <ul class="subnav">
@@ -41,19 +41,144 @@
     <!-- begin: content -->
     <div id="content">
         <!-- begin: the band -->
-        <div id="the-band"></div>
+        <div id="band">
+            <div class="section-content">
+                <h2 class="section-heading">THE BAND</h2>
+                <div class="section-sub-heading">We love music</div>
+                <p class="band-description">We have created a fictional band website. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                
+                <div class="member-list">
+                    <div class="member-item">
+                        <div class="member-name">Name</div>
+                        <img src="/assets/img/member/member.jpg" alt="img member" class="member-img">
+                    </div>
+                    <div class="member-item">
+                        <div class="member-name">Name</div>
+                        <img src="/assets/img/member/member.jpg" alt="img member" class="member-img">
+                    </div>
+                    <div class="member-item">
+                        <div class="member-name">Name</div>
+                        <img src="/assets/img/member/member.jpg" alt="img member" class="member-img">
+                    </div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        </div>
         <!-- end: the band -->
         <!-- --------------------------------- -->
         <!-- begin: tour -->
-        <div id="tour"></div>
+        <div id="tour">
+            <div class="section-content">
+                <h2 class="section-heading">TOUR DATES</h2>
+                <div class="section-sub-heading">Remember to book your tickets!</div>
+
+                <ul class="tour-ticket">
+                    <li>September <spand class="tour-status">Sold Out</spand></li>
+                    <li>October <spand class="tour-status">Sold Out</spand></li>
+                    <li>November <spand class="still">3</spand></li>
+                </ul>
+
+                <div class="place-list">
+                    <div class="place-item">
+                        <img src="/assets/img/place/place1.jpg" alt="Place 1" class="place-img">
+                        <div class="place-body">
+                            <h3 class="place-heading">New York</h3>
+                            <p class="place-time">Fri 27 Nov 2016</p>
+                            <p class="place-description">Praesent tincidunt sed tellus ut rutrum sed vitae justo.</p>
+                            <button class="place-buy-btn js-buy">Buy Tickets</button>
+                        </div>
+                    </div>
+                    <div class="place-item">
+                        <img src="/assets/img/place/place2.jpg" alt="Place 2" class="place-img">
+                        <div class="place-body">
+                            <h3 class="place-heading">Paris</h3>
+                            <p class="place-time">Sat 28 Nov 2016</p>
+                            <p class="place-description">Praesent tincidunt sed tellus ut rutrum sed vitae justo.</p>
+                            <button class="place-buy-btn js-buy">Buy Tickets</button>
+                        </div>
+                    </div>
+                    <div class="place-item">
+                        <img src="/assets/img/place/place3.jpg" alt="Place 3" class="place-img">
+                        <div class="place-body">
+                            <h3 class="place-heading">San Francisco</h3>
+                            <p class="place-time">Sun 29 Nov 2016</p>
+                            <p class="place-description">Praesent tincidunt sed tellus ut rutrum sed vitae justo</p>
+                            <button class="place-buy-btn js-buy">Buy Tickets</button>
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal js-modal">
+            <div class="modal-container js-modal-container">
+
+                <div class="modal-close js-modal-close">
+                    <i class="ti-close modal-close-1"></i>
+                </div>
+
+                <div class="modal-header">
+                    <i class="ti-bag modal-heading-icon"></i> 
+                    Tickets 
+                </div>
+
+                <div class="modal-body">
+
+                        <label for="tickets-quantity" class="modal-label">
+                            <i class="ti-shopping-cart"></i>
+                            Tickets, $15 per person
+                        </label>
+                        <input id="tickets-quantity" type="text" class="modal-input" placeholder="How many?">
+
+                        <label for="tickets-email" class="modal-label">
+                            <i class="ti-user"></i>
+                            Send to
+                        </label>
+                        <input id="tickets-email" type="email" class="modal-input" placeholder="Enter email">
+                        
+                        <button class="modal-button">
+                            Pay
+                            <i class="ti-check"></i>
+                        </button>
+                </div>
+                
+                <div class="modal-footer">
+                    <div class="modal-close-2 js-modal-close">Close</div>
+                    <div class="modal-help">Need <a href="#" class="modal-help-link">help?</a></div>
+                </div>
+
+            </div>
+        </div>
         <!-- end: tour -->
         <!-- --------------------------------- -->
         <!-- begin: contact -->
-        <div id="contact"></div>
+        <div id="contact">
+            <div class="section-content">
+                <h2 class="section-heading">CONTACT</h2>
+                <div class="section-sub-heading">Fan? Drop a note!</div>
+
+                <div class="contact-body">
+                    <div class="contact-info">
+                        <div class="contact-place"></div>
+                        <div class="contact-phone"></div>
+                        <div class="contact-mail"></div>
+                    </div>
+                    <div class="contact-input">
+                        <input type="text" class="name">
+                        <input type="text" class="mail">
+                        <input type="text" class="messenger">
+                        <input type="submit" value="Submit" class="submit">
+                    </div>
+                </div>
+            </div>
+        </div>
         <!-- end: contact -->
         <!-- --------------------------------- -->
         <!-- begin: map -->
-        <div id="map"></div>
+        <div id="map">
+
+        </div>
         <!-- end: map -->
     </div>
     <!-- end: content -->
@@ -61,5 +186,25 @@
     <!-- begin: footer -->
     <div id="footer"></div>
     <!-- end: footer -->
+    <script>
+        const buyBtns = document.querySelectorAll('.js-buy') // lưu 3 sự kiện 3 nút buy vào buyBtns
+        const modalOpen = document.querySelector('.js-modal')
+        const closes = document.querySelectorAll('.js-modal-close')
+
+        function showBuyTickets(){
+            modalOpen.classList.add('open')
+        }
+        for (const buyBtn of buyBtns){
+            buyBtn.addEventListener('click', showBuyTickets)
+        }
+
+        function closeBuyTickets(){
+            modalOpen.classList.remove('open')
+        }
+
+        for (const close of closes) {
+            close.addEventListener('click', closeBuyTickets)
+        }
+    </script>
 </body>
 </html>
